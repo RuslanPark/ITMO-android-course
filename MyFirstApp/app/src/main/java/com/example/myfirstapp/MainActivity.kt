@@ -1,5 +1,6 @@
 package com.example.myfirstapp
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -36,8 +37,22 @@ class MainActivity : AppCompatActivity() {
         textView.text = count.toString()
     }
 
-    fun randomNumber (view: View) {
-        textView.text = (0..10).random().toString()
+    fun randomMe (view: View) {
+        val rndIntent = Intent(this, RandomNumberActivity::class.java)
+        val counter =   textView.text.toString()
+        val count = Integer.parseInt(counter)
+        rndIntent.putExtra(RandomNumberActivity.TOTAL_COUNT, count)
+        startActivity(rndIntent)
     }
+
+    /*override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("textViewNumber", textView.text.toString())
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        textView.text = savedInstanceState.getString("textViewNumber")
+    }*/
 
 }
