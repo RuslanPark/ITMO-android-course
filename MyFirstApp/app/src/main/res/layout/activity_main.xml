@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
         android:text="@string/textView"
-        android:textColor="@android:color/white"
+        android:textColor="?attr/colorPrimary"
         android:textSize="96sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

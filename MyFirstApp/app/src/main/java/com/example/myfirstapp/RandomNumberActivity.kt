@@ -2,6 +2,7 @@ package com.example.myfirstapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import kotlinx.android.synthetic.main.activity_random_number.*
 import kotlin.random.Random
 
@@ -29,6 +30,10 @@ class RandomNumberActivity : AppCompatActivity() {
         textViewRndHeader.text = getString(R.string.random_heading, count)
     }
 
+    fun shutDown(view: View) {
+        finish()
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("textViewRndNumber", textViewRndNumber.text.toString())
         outState.putString("textViewRndHeader", textViewRndHeader.text.toString())
@@ -40,4 +45,5 @@ class RandomNumberActivity : AppCompatActivity() {
         textViewRndNumber.text = savedInstanceState.getString("textViewRndNumber")
         textViewRndHeader.text = savedInstanceState.getString("textViewRndHeader")
     }
+
 }

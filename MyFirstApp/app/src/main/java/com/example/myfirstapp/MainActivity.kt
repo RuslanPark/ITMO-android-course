@@ -22,12 +22,6 @@ class MainActivity : AppCompatActivity() {
         val message = textView.text
         val myToast = Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT)
         myToast.setGravity(Gravity.BOTTOM, 0, 0)
-
-        val myToastContainer = myToast.view as LinearLayout
-        val iconImage = ImageView(this)
-        iconImage.setImageResource(R.mipmap.ic_launcher)
-        myToastContainer.addView(iconImage, 0)
-        myToastContainer.setBackgroundColor(Color.TRANSPARENT)
         myToast.show()
     }
 
@@ -39,13 +33,24 @@ class MainActivity : AppCompatActivity() {
 
     fun randomMe (view: View) {
         val rndIntent = Intent(this, RandomNumberActivity::class.java)
-        val counter =   textView.text.toString()
+
+        val counter = textView.text.toString()
         val count = Integer.parseInt(counter)
         rndIntent.putExtra(RandomNumberActivity.TOTAL_COUNT, count)
+
         startActivity(rndIntent)
     }
 
-    /*override fun onSaveInstanceState(outState: Bundle) {
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+
+        if (hasFocus) {
+            Toast.makeText(this, "Focus", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("textViewNumber", textView.text.toString())
         super.onSaveInstanceState(outState)
     }
@@ -53,6 +58,6 @@ class MainActivity : AppCompatActivity() {
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         textView.text = savedInstanceState.getString("textViewNumber")
-    }*/
+    }
 
 }
