@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/current_day_params_background">
+
+    <TextView
+        android:id="@+id/windFlowNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/windFlowNumber"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVertical_33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/windFlowIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/weather_icons_regular"
+        android:textColor="@color/darkTextColor"
+        android:text="@string/windFlowIcon"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="@+id/windFlowNumber"
+        app:layout_constraintStart_toStartOf="@+id/windFlowNumber"
+        app:layout_constraintTop_toBottomOf="@+id/windFlowNumber" />
+
+    <TextView
+        android:id="@+id/windFlowText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/windFlowText"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/windFlowIcon"
+        app:layout_constraintStart_toStartOf="@+id/windFlowIcon"
+        app:layout_constraintTop_toBottomOf="@+id/windFlowIcon" />
+
+
+
+    <TextView
+        android:id="@+id/perceptionNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/perceptionNumber"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVertical_67"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVertical_33"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/perceptionIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/weather_icons_regular"
+        android:textColor="@color/darkTextColor"
+        android:text="@string/perceptionIcon"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="@+id/perceptionNumber"
+        app:layout_constraintStart_toStartOf="@+id/perceptionNumber"
+        app:layout_constraintTop_toBottomOf="@+id/perceptionNumber" />
+
+    <TextView
+        android:id="@+id/perceptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/perceptionText"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/perceptionIcon"
+        app:layout_constraintStart_toStartOf="@+id/perceptionIcon"
+        app:layout_constraintTop_toBottomOf="@+id/perceptionIcon" />
+
+
+
+    <TextView
+        android:id="@+id/humidityNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/humidityNumber"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical_67"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/humidityIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/weather_icons_regular"
+        android:textColor="@color/darkTextColor"
+        android:text="@string/humidityIcon"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="@+id/humidityNumber"
+        app:layout_constraintStart_toStartOf="@+id/humidityNumber"
+        app:layout_constraintTop_toBottomOf="@+id/humidityNumber" />
+
+    <TextView
+        android:id="@+id/humidityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/humidityText"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/humidityIcon"
+        app:layout_constraintStart_toStartOf="@+id/humidityIcon"
+        app:layout_constraintTop_toBottomOf="@+id/humidityIcon" />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVertical_33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVertical_67"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.67" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

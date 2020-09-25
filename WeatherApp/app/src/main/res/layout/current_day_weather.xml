@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/currentDayIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/weather_icons_regular"
+        android:textColor="@color/darkTextColor"
+        android:text="@string/currentDayIcon"
+        android:textSize="100sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/currentDayTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/currentDayTemperature"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="@+id/currentDayIcon"
+        app:layout_constraintStart_toStartOf="@+id/currentDayIcon"
+        app:layout_constraintTop_toBottomOf="@+id/currentDayIcon" />
+
+    <TextView
+        android:id="@+id/currentCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/currentCountry"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/currentDayTemperature"
+        app:layout_constraintStart_toStartOf="@+id/currentDayTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/currentDayTemperature" />
+
+    <TextView
+        android:id="@+id/currentDayWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/currentDayWeather"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="@+id/currentCountry"
+        app:layout_constraintStart_toStartOf="@+id/currentCountry"
+        app:layout_constraintTop_toBottomOf="@+id/currentCountry" />
+</androidx.constraintlayout.widget.ConstraintLayout>

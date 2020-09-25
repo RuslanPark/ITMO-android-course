@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="appTitle">Weather</string>
+
+    <string name="currentDayIcon"></string>
+    <string name="currentDayTemperature">8°C</string>
+    <string name="currentCountry">Almaty</string>
+    <string name="currentDayWeather">Cloudy</string>
+
+    <string name="windFlowNumber">78</string>
+    <string name="windFlowIcon"></string>
+    <string name="windFlowText">Wind flow</string>
+    <string name="perceptionNumber">52</string>
+    <string name="perceptionIcon"></string>
+    <string name="perceptionText">Perception</string>
+    <string name="humidityNumber">89</string>
+    <string name="humidityIcon"></string>
+    <string name="humidityText">Humidity</string>
+
+    <string name="todayWeather">Today</string>
+    <string name="todayWeatherIcon"></string>
+    <string name="todayWeatherTemperature">22°C</string>
+    <string name="todayWeatherText">Fair</string>
+    <string name="tomorrowWeather">Tomorrow</string>
+    <string name="tomorrowWeatherIcon"></string>
+    <string name="tomorrowWeatherTemperature">13°C</string>
+    <string name="tomorrowWeatherText">Smog</string>
+    <string name="sundayWeather">Sunday</string>
+    <string name="sundayWeatherIcon"></string>
+    <string name="sundayWeatherTemperature">14°C</string>
+    <string name="sundayWeatherText">Cloudy</string>
+    <string name="mondayWeather">Monday</string>
+    <string name="mondayWeatherIcon"></string>
+    <string name="mondayWeatherTemperature">15°C</string>
+    <string name="mondayWeatherText">Cloudy</string>
+    <string name="tuesdayWeather">Tuesday</string>
+    <string name="tuesdayWeatherIcon"></string>
+    <string name="tuesdayWeatherTemperature">14°C</string>
+    <string name="tuesdayWeatherText">Little rain</string>
+
+    <string name="menu"></string>
+    <string name="settings"></string>
+    <string name="point"></string>
+    <string name="home"></string>
+
+</resources>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/current_day_params_background">
+
+    <TextView
+        android:id="@+id/todayWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/todayWeather"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVertical_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/todayWeatherIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/weather_icons_regular"
+        android:textColor="@color/darkTextColor"
+        android:text="@string/todayWeatherIcon"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="@+id/todayWeather"
+        app:layout_constraintStart_toStartOf="@+id/todayWeather"
+        app:layout_constraintTop_toBottomOf="@+id/todayWeather" />
+
+    <TextView
+        android:id="@+id/todayWeatherTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/todayWeatherTemperature"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/todayWeatherIcon"
+        app:layout_constraintStart_toStartOf="@+id/todayWeatherIcon"
+        app:layout_constraintTop_toBottomOf="@+id/todayWeatherIcon" />
+
+    <TextView
+        android:id="@+id/todayWeatherText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/todayWeatherText"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/todayWeatherTemperature"
+        app:layout_constraintStart_toStartOf="@+id/todayWeatherTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/todayWeatherTemperature" />
+
+
+
+    <TextView
+        android:id="@+id/tomorrowWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tomorrowWeather"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVertical_40"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVertical_20"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tomorrowWeatherIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/weather_icons_regular"
+        android:textColor="@color/darkTextColor"
+        android:text="@string/tomorrowWeatherIcon"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="@+id/tomorrowWeather"
+        app:layout_constraintStart_toStartOf="@+id/tomorrowWeather"
+        app:layout_constraintTop_toBottomOf="@+id/tomorrowWeather" />
+
+    <TextView
+        android:id="@+id/tomorrowWeatherTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tomorrowWeatherTemperature"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/tomorrowWeatherIcon"
+        app:layout_constraintStart_toStartOf="@+id/tomorrowWeatherIcon"
+        app:layout_constraintTop_toBottomOf="@+id/tomorrowWeatherIcon" />
+
+    <TextView
+        android:id="@+id/tomorrowWeatherText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tomorrowWeatherText"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tomorrowWeatherTemperature"
+        app:layout_constraintStart_toStartOf="@+id/tomorrowWeatherTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/tomorrowWeatherTemperature" />
+
+
+
+    <TextView
+        android:id="@+id/sundayWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sundayWeather"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical_60"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical_40"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/sundayWeatherIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/weather_icons_regular"
+        android:textColor="@color/darkTextColor"
+        android:text="@string/sundayWeatherIcon"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="@+id/sundayWeather"
+        app:layout_constraintStart_toStartOf="@+id/sundayWeather"
+        app:layout_constraintTop_toBottomOf="@+id/sundayWeather" />
+
+    <TextView
+        android:id="@+id/sundayWeatherTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sundayWeatherTemperature"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/sundayWeatherIcon"
+        app:layout_constraintStart_toStartOf="@+id/sundayWeatherIcon"
+        app:layout_constraintTop_toBottomOf="@+id/sundayWeatherIcon" />
+
+    <TextView
+        android:id="@+id/sundayWeatherText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sundayWeatherText"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/sundayWeatherTemperature"
+        app:layout_constraintStart_toStartOf="@+id/sundayWeatherTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/sundayWeatherTemperature" />
+
+
+
+    <TextView
+        android:id="@+id/mondayWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mondayWeather"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical_80"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical_60"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/mondayWeatherIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/weather_icons_regular"
+        android:textColor="@color/darkTextColor"
+        android:text="@string/mondayWeatherIcon"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="@+id/mondayWeather"
+        app:layout_constraintStart_toStartOf="@+id/mondayWeather"
+        app:layout_constraintTop_toBottomOf="@+id/mondayWeather" />
+
+    <TextView
+        android:id="@+id/mondayWeatherTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mondayWeatherTemperature"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/mondayWeatherIcon"
+        app:layout_constraintStart_toStartOf="@+id/mondayWeatherIcon"
+        app:layout_constraintTop_toBottomOf="@+id/mondayWeatherIcon" />
+
+    <TextView
+        android:id="@+id/mondayWeatherText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mondayWeatherText"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/mondayWeatherTemperature"
+        app:layout_constraintStart_toStartOf="@+id/mondayWeatherTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/mondayWeatherTemperature" />
+
+
+
+    <TextView
+        android:id="@+id/tuesdayWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tuesdayWeather"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical_80"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tuesdayWeatherIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/weather_icons_regular"
+        android:textColor="@color/darkTextColor"
+        android:text="@string/tuesdayWeatherIcon"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="@+id/tuesdayWeather"
+        app:layout_constraintStart_toStartOf="@+id/tuesdayWeather"
+        app:layout_constraintTop_toBottomOf="@+id/tuesdayWeather" />
+
+    <TextView
+        android:id="@+id/tuesdayWeatherTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tuesdayWeatherTemperature"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/tuesdayWeatherIcon"
+        app:layout_constraintStart_toStartOf="@+id/tuesdayWeatherIcon"
+        app:layout_constraintTop_toBottomOf="@+id/tuesdayWeatherIcon" />
+
+    <TextView
+        android:id="@+id/tuesdayWeatherText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tuesdayWeatherText"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tuesdayWeatherTemperature"
+        app:layout_constraintStart_toStartOf="@+id/tuesdayWeatherTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/tuesdayWeatherTemperature" />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVertical_20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.20" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVertical_40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.40" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVertical_60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.60" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVertical_80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.80" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
