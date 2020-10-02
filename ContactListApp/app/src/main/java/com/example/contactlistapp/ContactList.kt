@@ -3,7 +3,7 @@ package com.example.contactlistapp
 import android.content.Context
 import android.provider.ContactsContract
 
-data class Contact(val name: String, val phoneNumber: String)
+data class Contact(val name: String, val phoneNumber: String, val photo : String)
 
 fun Context.fetchAllContacts(): List<Contact> {
     contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null)
@@ -15,8 +15,10 @@ fun Context.fetchAllContacts(): List<Contact> {
                     cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)) ?: "N/A"
                 val phoneNumber =
                     cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)) ?: "N/A"
+                val photo =
+                    cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.PHOTO_URI)) ?: "N/A"
 
-                builder.add(Contact(name, phoneNumber))
+                builder.add(Contact(name, phoneNumber, photo))
             }
             return builder
         }
