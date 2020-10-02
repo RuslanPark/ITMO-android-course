@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+  <include
+      layout="@layout/weather_title"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toTopOf="@+id/guidelineTitle_10"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <include
+      layout="@layout/current_day_weather"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toTopOf="@+id/guidelineCurrentDay_45"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guidelineTitle_10" />
+
+  <include
+      layout="@layout/current_day_params"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="5dp"
+      android:layout_marginEnd="5dp"
+      app:layout_constraintBottom_toTopOf="@+id/guidelineCurrentDayCharacteristic_67"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guidelineCurrentDay_45" />
+
+  <include
+      layout="@layout/five_days_weather"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="5dp"
+      android:layout_marginEnd="5dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guidelineCurrentDayCharacteristic_67"
+      app:layout_constraintBottom_toBottomOf="@id/guidelineMenu_90"/>
+
+  <include
+      layout="@layout/weather_bottom_view"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/guidelineMenu_90"
+      app:layout_constraintBottom_toBottomOf="parent"  />
+
+
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guidelineTitle_10"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.1" />
+
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guidelineCurrentDay_45"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.45" />
+
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guidelineCurrentDayCharacteristic_67"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.67" />
+
+  <androidx.constraintlayout.widget.Guideline
+      android:id="@+id/guidelineMenu_90"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_percent="0.90" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
