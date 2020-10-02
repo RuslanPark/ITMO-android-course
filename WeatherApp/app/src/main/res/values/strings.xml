@@ -43,4 +43,7 @@
     <string name="point"></string>
     <string name="home"></string>
 
+    <string name="switchTextOn"></string>
+    <string name="switchTextOff"></string>
+
 </resources>

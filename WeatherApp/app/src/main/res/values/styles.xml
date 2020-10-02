@@ -9,4 +9,9 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <style name="switchTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlActivated">@color/switchTextColor</item>
+        <item name="colorControlHighlight">@color/switchTextColor</item>
+    </style>
+
 </resources>

@@ -5,12 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/weather_day_background" >
+    android:background="@color/foreground">
 
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/lightTextColor"
         android:text="@string/appTitle"
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,9 +23,11 @@
         android:id="@+id/switchTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:theme="@style/switchTheme"
         app:layout_constraintBottom_toBottomOf="@+id/appTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/appTitle"
-        app:layout_constraintTop_toTopOf="@+id/appTitle" />
+        app:layout_constraintTop_toTopOf="@+id/appTitle"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

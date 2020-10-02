@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
 
     <TextView
@@ -22,6 +23,7 @@
         android:id="@+id/currentDayTemperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/lightTextColor"
         android:text="@string/currentDayTemperature"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="@+id/currentDayIcon"
@@ -32,6 +34,7 @@
         android:id="@+id/currentCountry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/lightTextColor"
         android:text="@string/currentCountry"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/currentDayTemperature"
@@ -42,6 +45,7 @@
         android:id="@+id/currentDayWeather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/lightTextColor"
         android:text="@string/currentDayWeather"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="@+id/currentCountry"
