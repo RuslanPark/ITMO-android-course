@@ -28,9 +28,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), REQUEST_CODE_PERMISSION_READ_CONTACTS)
         }
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.SEND_SMS), REQUEST_CODE_PERMISSION_SEND_SMS)
-        }
     }
 
     private fun displayContacts() {
@@ -51,6 +48,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${it.phoneNumber}"))
             startActivity(intent)
         }, {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.SEND_SMS), REQUEST_CODE_PERMISSION_SEND_SMS)
+            }
+
             val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:${it.phoneNumber}"))
             val message = "Hello! Long time no see, how are you!?"
             intent.putExtra("sms_body", message)
