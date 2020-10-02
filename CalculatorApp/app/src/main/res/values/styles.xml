@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -8,8 +8,9 @@
     </style>
 
     <style name="buttonStyle">
+        <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:background">@android:color/transparent</item>
+        <item name="android:background">@drawable/button</item>
         <item name="android:textSize">40sp</item>
     </style>
 

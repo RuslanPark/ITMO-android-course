@@ -1,9 +1,7 @@
 package com.example.calculatorapp
 
 import android.os.Bundle
-import android.view.MotionEvent
 import android.view.View
-import android.view.View.OnTouchListener
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,13 +28,13 @@ class MainActivity : AppCompatActivity() {
         try {
             textViewResult.text = ExpressionBuilder(textViewResult.text.toString()).build().evaluate().toString()
         } catch (e : ArithmeticException) {
-            textViewResult.text = "Division by zero!"
+            textViewResult.text = getString(R.string.division_by_zero)
         } catch (e : NumberFormatException) {
-            textViewResult.text = "Incorrect number format!"
+            textViewResult.text = getString(R.string.incorrect_number_format)
         } catch (e : IllegalArgumentException) {
-            textViewResult.text = "Invalid expression!"
+            textViewResult.text = getString(R.string.invalid_expression)
         } catch (e : Exception) {
-            textViewResult.text = "Error!"
+            textViewResult.text = getString(R.string.error)
         }
     }
 
