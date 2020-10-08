@@ -17,14 +17,14 @@ import java.net.URL
 
 class MainActivity : AppCompatActivity() {
 
-    private var listOfPhotos : List<Photo>? = null
+    private var listOfPhotos = arrayListOf<Photo>()
 
-    private class DescriptionLoader(activity : MainActivity) : AsyncTask<Void, Void, List<Photo>>() {
+    private class DescriptionLoader(activity : MainActivity) : AsyncTask<Void, Void, ArrayList<Photo>>() {
 
         private val activityReference = WeakReference(activity)
 
-        override fun doInBackground(vararg p0: Void?) : List<Photo> {
-            val listOfPhotos = mutableListOf<Photo>()
+        override fun doInBackground(vararg p0: Void?) : ArrayList<Photo> {
+            val listOfPhotos = arrayListOf<Photo>()
 
             val url = "https://api.vk.com/method/photos.search?q=Book&access_token=${BuildConfig.TOKEN}&v=5.124&count=100"
             var stringOnJSON = "Hello"
@@ -44,19 +44,22 @@ class MainActivity : AppCompatActivity() {
             return listOfPhotos
         }
 
-        override fun onPostExecute(result: List<Photo>) {
-            activityReference.get()?.onLoadCompleted(result)
+        override fun onPostExecute(result: ArrayList<Photo>) {
+            activityReference.get()?.showListOfDescriptions(result)
         }
 
     }
 
-    internal fun onLoadCompleted(result: List<Photo>) {
+    internal fun showListOfDescriptions(result: ArrayList<Photo>) {
         listOfPhotos = result
-        val viewManager = LinearLayoutManager(this@MainActivity)
+        val viewManager = LinearLayoutManager(this)
         val photoAdapter = RecycleViewAdapter(result) {
-            val intent = Intent(this@MainActivity, PhotoActivity::class.java)
+            val intent = Intent(this, PhotoActivity::class.java)
             intent.putExtra("url", it.url)
             startActivity(intent)
+            /*val intent = Intent(this, PhotoServiceActivity::class.java)
+            intent.putExtra("url", it.url)
+            startService(intent)*/
         }
         if (photoAdapter.itemCount == 0) {
             Toast.makeText(this, "No results", Toast.LENGTH_SHORT).show()
@@ -74,8 +77,21 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (listOfPhotos == null) {
+        if (listOfPhotos.isEmpty()) {
+            //Toast.makeText(this, "Restart", Toast.LENGTH_SHORT).show()
             DescriptionLoader(this).execute()
+        } else {
+            showListOfDescriptions(listOfPhotos)
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putParcelableArrayList("ListOfPhotos", listOfPhotos)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        listOfPhotos = savedInstanceState.getParcelableArrayList("ListOfPhotos")!!
     }
 }

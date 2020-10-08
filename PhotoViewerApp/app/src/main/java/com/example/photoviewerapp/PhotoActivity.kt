@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.graphics.BitmapFactory
 import android.graphics.Bitmap
 import android.util.Log
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_photo.*
 import java.lang.ref.WeakReference
 import java.net.URL
@@ -32,18 +33,19 @@ class PhotoActivity : AppCompatActivity() {
 
         override fun onPostExecute(result: Bitmap) {
             val activity = activityRef.get()
-            activity?.onLoadCompleted(result)
+            activity?.showPhoto(result)
         }
     }
 
-    internal fun onLoadCompleted(result: Bitmap?) {
+    internal fun showPhoto(result: Bitmap?) {
         image_view.setImageBitmap(result)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_photo)
+        //Toast.makeText(this, "Restart", Toast.LENGTH_SHORT).show()
         PhotoLoader(this).execute(intent.extras?.getString("url"))
-        //image_view.setImageResource(R.drawable.ic_launcher_background)
     }
+
 }

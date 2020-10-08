@@ -8,7 +8,7 @@ import com.example.photoviewerapp.Photo
 import com.example.photoviewerapp.R
 import kotlinx.android.synthetic.main.item.view.*
 
-class RecycleViewAdapter (val photos : List<Photo>, val onClick : (Photo) -> Unit) :
+class RecycleViewAdapter (val photos : ArrayList<Photo>, val onClick : (Photo) -> Unit) :
     RecyclerView.Adapter<RecycleViewAdapter.PhotoViewHolder>() {
 
     class PhotoViewHolder(val root : View) : RecyclerView.ViewHolder(root) {
