@@ -36,6 +36,7 @@ class PhotoServiceActivity : IntentService("PhotoService") {
         sentIntent.putExtra("PATH", photoAbsolutePath)
         sendBroadcast(sentIntent)
     }
+
     private fun saveToInternalStorage(bitmapImage: Bitmap?) : String {
         val cw = ContextWrapper(applicationContext)
         // path to /data/data/yourapp/app_data/imageDir
