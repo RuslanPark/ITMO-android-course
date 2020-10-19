@@ -1,21 +1,21 @@
 package com.example.photoviewerapp
 
 import android.app.IntentService
+import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 import java.net.URL
 
 
 class PhotoServiceActivity : IntentService("PhotoService") {
 
-    val INTENTSERVICE_ACTION = "PhotoService.RESPONSE"
-    val EXTRA_KEY_OUT = "PHOTO"
-
-    override fun onCreate() {
-        super.onCreate()
-    }
+    val ACTION_FIN = "FIN"
+    var photoAbsolutePath = ""
 
     override fun onHandleIntent(intent: Intent?) {
         val imageUrl = intent?.getStringExtra("url")
@@ -23,17 +23,39 @@ class PhotoServiceActivity : IntentService("PhotoService") {
         try {
             val inputStream = URL(imageUrl).openStream()
             bimage = BitmapFactory.decodeStream(inputStream)
-
         } catch (e: Exception) {
             Log.e("image", "Failed to load image ${e.message}", e)
             e.printStackTrace()
         }
-
-        val responseIntent = Intent()
-        responseIntent.action = INTENTSERVICE_ACTION
-        responseIntent.addCategory(Intent.CATEGORY_DEFAULT)
-        responseIntent.putExtra(EXTRA_KEY_OUT, bimage)
-        sendBroadcast(responseIntent)
+        photoAbsolutePath = saveToInternalStorage(bimage)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        val sentIntent = Intent(ACTION_FIN)
+        sentIntent.putExtra("PATH", photoAbsolutePath)
+        sendBroadcast(sentIntent)
+    }
+    private fun saveToInternalStorage(bitmapImage: Bitmap?) : String {
+        val cw = ContextWrapper(applicationContext)
+        // path to /data/data/yourapp/app_data/imageDir
+        val directory: File = cw.getDir("imageDir", MODE_PRIVATE)
+        // Create imageDir
+        val mypath = File(directory, "profile.jpg")
+        var fos: FileOutputStream? = null
+        try {
+            fos = FileOutputStream(mypath)
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage?.compress(Bitmap.CompressFormat.PNG, 100, fos)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            try {
+                fos?.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+        return directory.getAbsolutePath()
+    }
 }

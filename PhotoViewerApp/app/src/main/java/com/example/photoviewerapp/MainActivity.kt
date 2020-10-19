@@ -57,9 +57,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, PhotoActivity::class.java)
             intent.putExtra("url", it.url)
             startActivity(intent)
-            /*val intent = Intent(this, PhotoServiceActivity::class.java)
-            intent.putExtra("url", it.url)
-            startService(intent)*/
         }
         if (photoAdapter.itemCount == 0) {
             Toast.makeText(this, "No results", Toast.LENGTH_SHORT).show()
