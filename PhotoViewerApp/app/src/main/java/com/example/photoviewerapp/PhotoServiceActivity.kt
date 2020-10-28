@@ -39,7 +39,7 @@ class PhotoServiceActivity : IntentService("PhotoService") {
 
     private fun saveToInternalStorage(bitmapImage: Bitmap?) : String {
         val cw = ContextWrapper(applicationContext)
-        // path to /data/data/yourapp/app_data/imageDir
+        // path to /data/data/com.example.photoviewerapp/app_imageDir"
         val directory: File = cw.getDir("imageDir", MODE_PRIVATE)
         // Create imageDir
         val mypath = File(directory, "profile.jpg")

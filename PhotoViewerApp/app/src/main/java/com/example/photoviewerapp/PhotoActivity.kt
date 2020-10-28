@@ -7,6 +7,7 @@ import android.content.IntentFilter
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.util.LruCache
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -37,7 +38,7 @@ class PhotoActivity : AppCompatActivity() {
         retainedFragment = fm.findFragmentByTag("retain") as? RetainedFragment
 
         if (retainedFragment != null) {
-            System.out.println("!=NULL")
+            Log.i("retain", "has retain fragment")
             lruCache = retainedFragment!!.retain
 
             val imageUrl = intent.extras?.getString("url")
@@ -48,11 +49,11 @@ class PhotoActivity : AppCompatActivity() {
             }
         } else {
 
-            System.out.println("==NULL")
+            Log.i("retain","hasn't retain fragment")
             retainedFragment = RetainedFragment()
             fm.beginTransaction().add(retainedFragment!!, "retain").commit()
 
-            //System.out.println("Resume")
+
             val photoService = Intent(this, PhotoServiceActivity::class.java)
             photoService.putExtra("url", intent.extras?.getString("url"))
             startService(photoService)
@@ -64,9 +65,8 @@ class PhotoActivity : AppCompatActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-
+    override fun onStop() {
+        super.onStop()
         retainedFragment!!.retain = lruCache
     }
 
@@ -78,8 +78,8 @@ class PhotoActivity : AppCompatActivity() {
             val imageUrl = intent.extras?.getString("url")
             lruCache.put(imageUrl, b)
 
-            f.delete()
-            File("path").delete()
+            //f.delete()
+            //File("path").delete()
         } catch (e: FileNotFoundException) {
             e.printStackTrace()
         }
@@ -104,6 +104,4 @@ class PhotoActivity : AppCompatActivity() {
             setRetainInstance(true)
         }
     }
-
-    //"/data/data/com.example.photoviewerapp/app_imageDir"
 }

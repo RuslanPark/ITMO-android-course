@@ -26,10 +26,10 @@ class MainActivity : AppCompatActivity() {
         override fun doInBackground(vararg p0: Void?) : ArrayList<Photo> {
             val listOfPhotos = arrayListOf<Photo>()
 
-            val url = "https://api.vk.com/method/photos.search?q=Book&access_token=${BuildConfig.TOKEN}&v=5.124&count=100"
+            val url = "https://api.vk.com/method/photos.search?q=Nature&access_token=${BuildConfig.TOKEN}&v=5.124&count=100"
             var stringOnJSON = "Hello"
             try {
-                stringOnJSON = InputStreamReader( URL(url).openConnection().getInputStream() ).use { it.readText() }
+                stringOnJSON = InputStreamReader( URL(url).openConnection().getInputStream() ).readText()
             } catch (e : Exception) {
                 e.printStackTrace()
             }
