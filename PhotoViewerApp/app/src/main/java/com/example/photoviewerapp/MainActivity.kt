@@ -17,6 +17,9 @@ import java.net.URL
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        private const val TOKEN = "6f5a81d96f5a81d96f5a81d92f6f2ec6c166f5a6f5a81d93026f6d4af4aba0d77456e34"
+    }
     private var listOfPhotos = arrayListOf<Photo>()
 
     private class DescriptionLoader(activity : MainActivity) : AsyncTask<Void, Void, ArrayList<Photo>>() {
@@ -26,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         override fun doInBackground(vararg p0: Void?) : ArrayList<Photo> {
             val listOfPhotos = arrayListOf<Photo>()
 
-            val url = "https://api.vk.com/method/photos.search?q=Nature&access_token=${BuildConfig.TOKEN}&v=5.124&count=100"
+            val url = "https://api.vk.com/method/photos.search?q=Nature&access_token=${TOKEN}&v=5.124&count=100"
             var stringOnJSON = "Hello"
             try {
                 stringOnJSON = InputStreamReader( URL(url).openConnection().getInputStream() ).readText()

@@ -19,17 +19,18 @@ android {
     buildTypes {
 
         debug {
-            buildConfigField "String", "TOKEN", getProps("ApiKey")
+            //buildConfigField "String", "TOKEN", getProps("ApiKey")
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "TOKEN", getProps("ApiKey")
+            //buildConfigField "String", "TOKEN", getProps("ApiKey")
         }
     }
 
 }
 
+/*
 def getProps(String propName) {
     def propsFile = rootProject.file('local.properties')
     if (propsFile.exists()) {
@@ -40,6 +41,7 @@ def getProps(String propName) {
         return "";
     }
 }
+*/
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])

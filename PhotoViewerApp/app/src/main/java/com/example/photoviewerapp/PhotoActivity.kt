@@ -32,9 +32,9 @@ class PhotoActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        System.out.println("onResume")
+        //System.out.println("onResume")
 
-        val fm : FragmentManager = getSupportFragmentManager()
+        val fm : FragmentManager = supportFragmentManager
         retainedFragment = fm.findFragmentByTag("retain") as? RetainedFragment
 
         if (retainedFragment != null) {
