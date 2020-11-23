@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GetPostDeleteApp</string>
+    <string name="postButton">Post</string>
+    <string name="bodyEditText">Body</string>
+    <string name="titleEditText">Title</string>
+    <string name="idEditText">ID</string>
+    <string name="useridEditText">userID</string>
+</resources>
