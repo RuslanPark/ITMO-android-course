@@ -2,14 +2,9 @@ package com.example.navigationapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.SparseArray
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.example.android.navigationadvancedsample.setupWithNavController
-import com.example.navigationapp.fragments.HomeFragment
-import com.example.navigationapp.fragments.ListFragment
-import com.example.navigationapp.fragments.SearchFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

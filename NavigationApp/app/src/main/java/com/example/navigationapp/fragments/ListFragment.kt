@@ -13,10 +13,6 @@ import kotlinx.android.synthetic.main.fragment_list.view.*
 
 class ListFragment : Fragment() {
 
-    companion object{
-        var globalCount = 0
-    }
-
     private val args: ListFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -26,7 +22,6 @@ class ListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_list, container, false)
 
         var count = args.count
-        globalCount = count
         view.textViewList.text = count.toString()
         view.nextButtonList.setOnClickListener{
             val action = ListFragmentDirections.listFragmentSelf(++count)

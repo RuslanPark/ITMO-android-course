@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class HomeFragment : Fragment() {
 
-    val args: HomeFragmentArgs by navArgs()
+    private val args: HomeFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +26,7 @@ class HomeFragment : Fragment() {
             val action = HomeFragmentDirections.homeFragmentSelf(++count)
             it.findNavController().navigate(action)
         }
+
         return view
     }
 }

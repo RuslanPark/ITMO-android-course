@@ -13,10 +13,6 @@ import kotlinx.android.synthetic.main.fragment_search.view.*
 
 class SearchFragment : Fragment() {
 
-    companion object{
-        var globalCount = 0
-    }
-
     private val args: SearchFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -26,7 +22,6 @@ class SearchFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_search, container, false)
 
         var count = args.count
-        globalCount = count
         view.textViewSearch.text = count.toString()
         view.nextButtonSearch.setOnClickListener{
             val action = SearchFragmentDirections.searchFragmentSelf(++count)
