@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">NavigationApp</string>
+
+    <string name="home_fragment">Home</string>
+    <string name="list_fragment">List</string>
+    <string name="search_fragment">Search</string>
+
+    <string name="defaultNum">0</string>
+    <string name="nextButton">Next</string>
+</resources>

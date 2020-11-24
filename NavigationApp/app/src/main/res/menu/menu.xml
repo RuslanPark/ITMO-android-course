@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_fragment_navigation"
+        android:title="@string/home_fragment"
+        android:icon="@drawable/ic_home"
+        />
+    <item
+        android:id="@+id/list_fragment_navigation"
+        android:title="@string/list_fragment"
+        android:icon="@drawable/ic_list"
+        />
+    <item
+        android:id="@+id/search_fragment_navigation"
+        android:title="@string/search_fragment"
+        android:icon="@drawable/ic_search"
+        />
+</menu>

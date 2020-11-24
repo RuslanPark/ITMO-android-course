@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_fragment_navigation"
+    app:startDestination="@id/home_fragment"
+    tools:ignore="UnusedNavigation">
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.example.navigationapp.fragments.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/home_fragment_self"
+            app:destination="@id/home_fragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/fragment_open_exit" />
+        <argument
+            android:name="count"
+            android:defaultValue="0"
+            app:argType="integer" />
+
+    </fragment>
+</navigation>
