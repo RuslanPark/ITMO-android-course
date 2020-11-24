@@ -46,9 +46,6 @@ class MainActivity : AppCompatActivity() {
         postAdapter = RecycleViewAdapter(listOfPosts) {
             postDelete(it)
         }
-        if (postAdapter.itemCount == 0) {
-            Toast.makeText(this, "No results", Toast.LENGTH_SHORT).show()
-        }
         recyclerView.apply {
             layoutManager = viewManager
             adapter = postAdapter

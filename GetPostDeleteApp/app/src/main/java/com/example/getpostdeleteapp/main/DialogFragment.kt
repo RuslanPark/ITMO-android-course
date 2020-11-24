@@ -15,7 +15,8 @@ class DialogFragment : DialogFragment() {
                 .setMessage("Data saving into local database!")
                 .setIcon(R.drawable.ic_refresh)
                 .setPositiveButton("ОК") {
-                        dialog, id ->  dialog.cancel()
+                        dialog,
+                        _ ->  dialog.cancel()
                 }
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")

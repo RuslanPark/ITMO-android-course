@@ -14,10 +14,6 @@ object SimpleApiModule {
 
     private val retrofit by lazy {
 
-        /*val oktHttpClient = OkHttpClient.Builder()
-            .addInterceptor()
-            .build()*/
-
         Retrofit.Builder()
             .client(httpClient.build())
             .baseUrl(Constants.BASE_URL)
@@ -31,7 +27,7 @@ object SimpleApiModule {
 
     }
 
-    val api by lazy {
+    val api: SimpleApi by lazy {
         retrofit.create(SimpleApi::class.java)
     }
 }
