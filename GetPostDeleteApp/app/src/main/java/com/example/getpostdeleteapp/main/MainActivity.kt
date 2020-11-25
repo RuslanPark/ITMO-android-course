@@ -104,8 +104,8 @@ class MainActivity : AppCompatActivity() {
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         postViewModel = ViewModelProvider(this).get(PostViewModel::class.java)
-        showListOfPosts()
         bindObservers()
+        showListOfPosts()
     }
 
     override fun onResume() {
