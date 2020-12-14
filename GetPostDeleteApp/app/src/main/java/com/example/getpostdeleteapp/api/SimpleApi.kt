@@ -1,6 +1,7 @@
 package com.example.getpostdeleteapp.api
 
 import com.example.getpostdeleteapp.model.Post
+import io.reactivex.Observable
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
@@ -9,18 +10,18 @@ import retrofit2.http.*
 interface SimpleApi {
 
     @GET("posts")
-    suspend fun getPosts(
+    fun getPosts(
         @Query("_sort") sort : String,
         @Query("_order") order : String
-    ) : Response<List<Post>>
+    ) : Observable<Response<List<Post>>>
 
     @DELETE("posts/{postNumber}")
-    suspend fun deletePost(
+    fun deletePost(
         @Path("postNumber") number : Int
-    ) : Response<ResponseBody>
+    ) : Observable<Response<ResponseBody>>
 
     @POST("posts")
-    suspend fun pushPost(
+    fun pushPost(
         @Body post : Post
-    ) : Response<Post>
+    ) : Observable<Response<Post>>
 }

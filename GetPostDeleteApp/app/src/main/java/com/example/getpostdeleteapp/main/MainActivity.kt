@@ -26,15 +26,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var postAdapter: RecycleViewAdapter
 
     private fun postsGet() {
+        progressBar.visibility = ProgressBar.VISIBLE
         viewModel.getPosts("id", "asc")
     }
 
     private fun postDelete(post: Post) {
+        progressBar.visibility = ProgressBar.VISIBLE
         viewModel.deletePost(post.id)
         postViewModel.deleteData(post)
     }
 
     private fun postPush(post: Post) {
+        progressBar.visibility = ProgressBar.VISIBLE
         viewModel.pushPost(post)
         postViewModel.insertData(post)
     }
@@ -45,6 +48,9 @@ class MainActivity : AppCompatActivity() {
         val viewManager = LinearLayoutManager(this)
         postAdapter = RecycleViewAdapter(listOfPosts) {
             postDelete(it)
+        }
+        if (postAdapter.itemCount == 0) {
+            Toast.makeText(this, "No saved data, please refresh", Toast.LENGTH_SHORT).show()
         }
         recyclerView.apply {
             layoutManager = viewManager
@@ -89,7 +95,11 @@ class MainActivity : AppCompatActivity() {
 
         postViewModel.readAllData.observe(this, {
             listOfPosts = it
-            postAdapter.update(listOfPosts)
+            if (it.isEmpty() || !this::postAdapter.isInitialized) {
+                showListOfPosts()
+            } else {
+                postAdapter.update(listOfPosts)
+            }
             progressBar.visibility = ProgressBar.INVISIBLE
         })
     }
@@ -105,15 +115,6 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         postViewModel = ViewModelProvider(this).get(PostViewModel::class.java)
         bindObservers()
-        showListOfPosts()
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        if (listOfPosts.isEmpty()) {
-            postsGet()
-        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

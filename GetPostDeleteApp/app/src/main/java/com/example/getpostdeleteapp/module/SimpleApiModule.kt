@@ -5,6 +5,7 @@ import com.example.getpostdeleteapp.utils.Constants
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
 object SimpleApiModule {
 
@@ -18,6 +19,7 @@ object SimpleApiModule {
             .client(httpClient.build())
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             /*.addConverterFactory(
                 MoshiConverterFactory.create(
                     Moshi.Builder().add(KotlinJsonAdapterFactory()).build()

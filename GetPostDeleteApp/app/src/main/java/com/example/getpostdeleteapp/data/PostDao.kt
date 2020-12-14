@@ -1,6 +1,5 @@
 package com.example.getpostdeleteapp.data
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.getpostdeleteapp.model.Post
 
@@ -14,7 +13,7 @@ interface PostDao {
     fun insertData(post : Post)
 
     @Query("SELECT * FROM post")
-    fun findAllData(): LiveData<MutableList<Post>>
+    fun findAllData(): MutableList<Post>
 
     @Query("DELETE FROM post")
     fun clearData()

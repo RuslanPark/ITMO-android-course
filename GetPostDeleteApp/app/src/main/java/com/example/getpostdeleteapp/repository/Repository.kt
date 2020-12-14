@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.getpostdeleteapp.module.NetworkConnectionInterceptor
 import com.example.getpostdeleteapp.module.SimpleApiModule
 import com.example.getpostdeleteapp.model.Post
+import io.reactivex.Observable
 import okhttp3.ResponseBody
 import retrofit2.Response
 
@@ -13,15 +14,15 @@ class Repository (context: Context) {
         SimpleApiModule.httpClient.addInterceptor(NetworkConnectionInterceptor(context))
     }
 
-    suspend fun getPosts(sort: String, order: String) : Response<List<Post>> {
+    fun getPosts(sort: String, order: String) : Observable<Response<List<Post>>> {
         return SimpleApiModule.api.getPosts(sort, order)
     }
 
-    suspend fun deletePost(number: Int) : Response<ResponseBody> {
+    fun deletePost(number: Int) : Observable<Response<ResponseBody>> {
         return SimpleApiModule.api.deletePost(number)
     }
 
-    suspend fun pushPost(post: Post) : Response<Post> {
+    fun pushPost(post: Post) : Observable<Response<Post>> {
         return SimpleApiModule.api.pushPost(post)
     }
 }
