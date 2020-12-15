@@ -3,13 +3,13 @@ package com.example.photoviewerapp
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.contactlistapp.RecycleViewAdapter
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
-import java.io.IOException
 import java.io.InputStreamReader
 import java.lang.ref.WeakReference
 import java.net.URL
@@ -78,6 +78,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         if (listOfPhotos.isEmpty()) {
+            Log.d("Restart", "Here!!!")
             //Toast.makeText(this, "Restart", Toast.LENGTH_SHORT).show()
             DescriptionLoader(this).execute()
         } else {
