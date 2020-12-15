@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        val set = AnimatorInflater.loadAnimator(textView.context, R.animator.text_view_launch) as AnimatorSet
-        set.setTarget(textView)
-        set.start()
+        val animatorSet = AnimatorInflater.loadAnimator(textView.context, R.animator.text_view_launch) as AnimatorSet
+        animatorSet.setTarget(textView)
+        animatorSet.start()
     }
 }
