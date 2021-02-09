@@ -1,22 +1,21 @@
 package com.example.weatherapp
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Layout
-import android.view.View
-import android.widget.Switch
 import androidx.appcompat.app.AppCompatDelegate
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.weather_title.*
+import com.example.weatherapp.databinding.ActivityMainBinding
+import com.example.weatherapp.databinding.WeatherTitleBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: WeatherTitleBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = WeatherTitleBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        switchTheme.setOnCheckedChangeListener { _, isChecked ->
+        binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
             } else {
