@@ -7,27 +7,33 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.navigationapp.R
-import kotlinx.android.synthetic.main.fragment_search.*
-import kotlinx.android.synthetic.main.fragment_search.view.*
+import com.example.navigationapp.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
+
+    private var _binding : FragmentSearchBinding? = null
+    private val binding get() = _binding!!
 
     private val args: SearchFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_search, container, false)
+    ): View {
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
 
         var count = args.count
-        view.textViewSearch.text = count.toString()
-        view.nextButtonSearch.setOnClickListener{
+        binding.textViewSearch.text = count.toString()
+        binding.nextButtonSearch.setOnClickListener{
             val action = SearchFragmentDirections.searchFragmentSelf(++count)
             it.findNavController().navigate(action)
         }
 
-        return view
+        return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

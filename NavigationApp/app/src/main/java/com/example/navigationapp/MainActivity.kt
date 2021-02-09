@@ -5,20 +5,22 @@ import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.example.android.navigationadvancedsample.setupWithNavController
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.navigationapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     private var currentNavController: LiveData<NavController>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if (savedInstanceState == null) {
-            bottom_navigation.selectedItemId = R.id.home_fragment
+            binding.bottomNavigation.selectedItemId = R.id.home_fragment
         } else {
-            bottom_navigation.selectedItemId = savedInstanceState.getInt("lastFragment")
+            binding.bottomNavigation.selectedItemId = savedInstanceState.getInt("lastFragment")
         }
 
         val navGraphIds = listOf(
@@ -27,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             R.navigation.search_fragment_navigation
         )
 
-        val controller = bottom_navigation.setupWithNavController(
+        val controller = binding.bottomNavigation.setupWithNavController(
             navGraphIds = navGraphIds,
             fragmentManager = supportFragmentManager,
             containerId = R.id.nav_host_container,
@@ -37,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
 
         savedInstanceState?.let {
-            bottom_navigation.selectedItemId = it.getInt("lastFragment")
+            binding.bottomNavigation.selectedItemId = it.getInt("lastFragment")
         }
     }
 
@@ -46,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putInt("lastFragment", bottom_navigation.selectedItemId)
+        outState.putInt("lastFragment", binding.bottomNavigation.selectedItemId)
         super.onSaveInstanceState(outState)
     }
 }
