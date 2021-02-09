@@ -1,4 +1,4 @@
-### Archive of home projects for the Android course at ITMO
+### Archive of home projects for the Android course  
 
 1 [CalculatorApp](https://github.com/RuslanPark/ITMO-android-course/tree/master/CalculatorApp)  
 2 [WeatherApp](https://github.com/RuslanPark/ITMO-android-course/tree/master/WeatherApp)  
