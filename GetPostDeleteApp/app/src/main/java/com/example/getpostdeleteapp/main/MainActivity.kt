@@ -2,48 +2,47 @@ package com.example.getpostdeleteapp.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.getpostdeleteapp.R
 import com.example.getpostdeleteapp.adapter.RecycleViewAdapter
+import com.example.getpostdeleteapp.databinding.ActivityMainBinding
 import com.example.getpostdeleteapp.model.Post
 import com.example.getpostdeleteapp.repository.Repository
 import com.example.getpostdeleteapp.viewmodel.MainViewModel
 import com.example.getpostdeleteapp.viewmodel.MainViewModelFactory
 import com.example.getpostdeleteapp.viewmodel.PostViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     private var listOfPosts = mutableListOf<Post>()
     private lateinit var viewModel: MainViewModel
     private lateinit var postViewModel: PostViewModel
     private lateinit var postAdapter: RecycleViewAdapter
 
     private fun postsGet() {
-        progressBar.visibility = ProgressBar.VISIBLE
+        binding.progressBar.visibility = ProgressBar.VISIBLE
         viewModel.getPosts("id", "asc")
     }
 
     private fun postDelete(post: Post) {
-        progressBar.visibility = ProgressBar.VISIBLE
+        binding.progressBar.visibility = ProgressBar.VISIBLE
         viewModel.deletePost(post.id)
         postViewModel.deleteData(post)
     }
 
     private fun postPush(post: Post) {
-        progressBar.visibility = ProgressBar.VISIBLE
+        binding.progressBar.visibility = ProgressBar.VISIBLE
         viewModel.pushPost(post)
         postViewModel.insertData(post)
     }
 
     private fun showListOfPosts() {
-        progressBar.visibility = ProgressBar.INVISIBLE
+        binding.progressBar.visibility = ProgressBar.INVISIBLE
 
         val viewManager = LinearLayoutManager(this)
         postAdapter = RecycleViewAdapter(listOfPosts) {
@@ -52,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         if (postAdapter.itemCount == 0) {
             Toast.makeText(this, "No saved data, please refresh", Toast.LENGTH_SHORT).show()
         }
-        recyclerView.apply {
+        binding.recyclerView.apply {
             layoutManager = viewManager
             adapter = postAdapter
         }
@@ -100,15 +99,16 @@ class MainActivity : AppCompatActivity() {
             } else {
                 postAdapter.update(listOfPosts)
             }
-            progressBar.visibility = ProgressBar.INVISIBLE
+            binding.progressBar.visibility = ProgressBar.INVISIBLE
         })
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        progressBar.visibility = ProgressBar.VISIBLE
+        binding.progressBar.visibility = ProgressBar.VISIBLE
 
         val repository = Repository(this)
         val viewModelFactory = MainViewModelFactory(repository)
@@ -125,7 +125,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Post data format is incorrect", Toast.LENGTH_SHORT).show()
         } else {
             postPush(post)
-            progressBar.visibility = ProgressBar.VISIBLE
+            binding.progressBar.visibility = ProgressBar.VISIBLE
         }
     }
 

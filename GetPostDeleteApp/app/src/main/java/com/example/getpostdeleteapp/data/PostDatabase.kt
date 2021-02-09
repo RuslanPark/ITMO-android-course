@@ -1,12 +1,10 @@
 package com.example.getpostdeleteapp.data
 
 import android.content.Context
-import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.getpostdeleteapp.model.Post
-
 
 @Database(entities = [Post::class], version = 1)
 abstract class PostDatabase : RoomDatabase() {

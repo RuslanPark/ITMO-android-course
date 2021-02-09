@@ -5,15 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import com.example.getpostdeleteapp.R
+import com.example.getpostdeleteapp.databinding.ActivityNewPostBinding
 import com.example.getpostdeleteapp.model.Post
-import kotlinx.android.synthetic.main.activity_new_post.*
 import java.lang.Exception
 
 class NewPostActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityNewPostBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new_post)
+        binding = ActivityNewPostBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 
     fun send(view : View) {
@@ -22,10 +25,10 @@ class NewPostActivity : AppCompatActivity() {
             intent.putExtra(
                 "post",
                 Post(
-                    Integer.parseInt(editTextUserId.text.toString()),
-                    Integer.parseInt(editTextId.text.toString()),
-                    editTextTitle.text.toString(),
-                    editTextBody.text.toString()
+                    Integer.parseInt(binding.editTextUserId.text.toString()),
+                    Integer.parseInt(binding.editTextId.text.toString()),
+                    binding.editTextTitle.text.toString(),
+                    binding.editTextBody.text.toString()
                 )
             )
         } catch (e : Exception) {

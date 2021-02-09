@@ -1,20 +1,17 @@
 package com.example.getpostdeleteapp.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.getpostdeleteapp.R
+import com.example.getpostdeleteapp.databinding.ItemBinding
 import com.example.getpostdeleteapp.model.Post
-import kotlinx.android.synthetic.main.item.view.*
 
 class RecycleViewAdapter (private var posts : MutableList<Post>, val onClickDeleteButton : (Post) -> Unit) :
     RecyclerView.Adapter<RecycleViewAdapter.PostViewHolder>() {
 
-    class PostViewHolder(val root : View) : RecyclerView.ViewHolder(root) {
+    class PostViewHolder(val binding : ItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(post : Post) {
-            with(root) {
+            with(binding) {
                 val titleStr = post.userId.toString() + " " + post.id.toString() + " " + post.title
                 postTitle.text = titleStr
                 postBody.text = post.body
@@ -23,8 +20,8 @@ class RecycleViewAdapter (private var posts : MutableList<Post>, val onClickDele
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        val holder = PostViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false))
-        holder.root.deleteButton.setOnClickListener {
+        val holder = PostViewHolder(ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        holder.binding.deleteButton.setOnClickListener {
             val post = posts[holder.adapterPosition]
             onClickDeleteButton(post)
         }

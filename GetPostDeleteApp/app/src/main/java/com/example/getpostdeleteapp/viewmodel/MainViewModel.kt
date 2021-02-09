@@ -1,24 +1,13 @@
 package com.example.getpostdeleteapp.viewmodel
 
-import android.annotation.SuppressLint
-import android.util.AndroidRuntimeException
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.getpostdeleteapp.exceptions.NoConnectivityException
 import com.example.getpostdeleteapp.model.Post
 import com.example.getpostdeleteapp.repository.Repository
-import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
 import io.reactivex.internal.schedulers.IoScheduler
-import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
-import retrofit2.Call
 import retrofit2.Response
-import java.lang.Exception
-import java.net.UnknownHostException
 
 class MainViewModel(private val repository: Repository) : ViewModel() {
 

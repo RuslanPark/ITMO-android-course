@@ -3,7 +3,6 @@ package com.example.getpostdeleteapp.api
 import com.example.getpostdeleteapp.model.Post
 import io.reactivex.Observable
 import okhttp3.ResponseBody
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
 

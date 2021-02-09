@@ -7,7 +7,6 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
 
-
 class NetworkConnectionInterceptor(context: Context) : Interceptor {
 
     private var mContext: Context = context.applicationContext
@@ -17,7 +16,6 @@ class NetworkConnectionInterceptor(context: Context) : Interceptor {
         if (!isConnected()) {
             throw NoConnectivityException()
         }
-        //val builder: Request.Builder = chain.request().newBuilder()
         return chain.proceed(chain.request())
     }
 
