@@ -1,54 +1,80 @@
 package com.example.contactlistapp
 
 import android.net.Uri
+import android.renderscript.ScriptGroup
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item.view.*
+import com.example.contactlistapp.databinding.ItemBinding
+import com.example.contactlistapp.databinding.ItemBlueBinding
+import java.util.*
 
-
-class RecycleViewAdapter (val contacts : List<Contact>, val onClick : (Contact) -> Unit, val onClickSendMessage : (Contact) -> Unit) :
+class RecycleViewAdapter(
+    var contacts: List<Contact>,
+    val onClick: (Contact) -> Unit,
+    val onClickSendMessage: (Contact) -> Unit
+) :
     RecyclerView.Adapter<RecycleViewAdapter.ContactViewHolder>() {
 
-    class ContactViewHolder(val root : View) : RecyclerView.ViewHolder(root) {
-        fun bind(contact : Contact) {
-            with(root) {
-                contact_name.text = contact.name
-                contact_phone_number.text = contact.phoneNumber
+    private val savedContactsInstance = contacts
+
+    class ContactViewHolder(val binding : ItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(contact: Contact) {
+            with(binding) {
+                contactName.text = contact.name
+                contactPhoneNumber.text = contact.phoneNumber
                 if (contact.photo == "N/A") {
-                    contact_photo.setImageResource(R.drawable.ic_launcher_background)
+                    contactPhoto.setImageResource(R.drawable.ic_launcher_background)
                 } else {
-                    contact_photo.setImageURI(Uri.parse(contact.photo))
+                    contactPhoto.setImageURI(Uri.parse(contact.photo))
                 }
             }
         }
     }
 
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        super.onAttachedToRecyclerView(recyclerView)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecycleViewAdapter.ContactViewHolder {
-        val holder : ContactViewHolder
-        when (viewType) {
+        val holder: ContactViewHolder = when (viewType) {
             3 -> {
-                holder = ContactViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_blue, parent, false))
+                ContactViewHolder(
+                    ItemBinding.inflate(LayoutInflater.from(parent.context),
+                        parent, false)
+                )
             }
             else -> {
-                holder = ContactViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false))
+                ContactViewHolder(
+                    ItemBinding.inflate(LayoutInflater.from(parent.context),
+                        parent, false)
+                )
             }
         }
-        holder.root.setOnClickListener {
+        holder.binding.root.setOnClickListener {
             onClick(contacts[holder.adapterPosition])
         }
-        holder.root.sendMessage.setOnClickListener {
+        holder.binding.sendMessage.setOnClickListener {
             onClickSendMessage(contacts[holder.adapterPosition])
         }
         return holder
     }
 
-    override fun onBindViewHolder(holder: ContactViewHolder, position: Int) = holder.bind(contacts[position])
+    fun filter(charText: String) {
+        contacts = savedContactsInstance
+        if (charText.isNotEmpty()) {
+            val filteredList = mutableListOf<Contact>()
+            for (contact in contacts) {
+                if (contact.name.toLowerCase(Locale.getDefault()).contains(charText.toLowerCase(Locale.getDefault())) ||
+                    contact.phoneNumber.toLowerCase(Locale.getDefault()).contains(charText.toLowerCase(Locale.getDefault()))
+                ) {
+                    filteredList.add(contact)
+                }
+            }
+            contacts = filteredList
+        }
+    }
+
+    override fun onBindViewHolder(holder: ContactViewHolder, position: Int) =
+        holder.bind(contacts[position])
 
     override fun getItemCount() = contacts.size
 

@@ -5,28 +5,37 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.view.Menu
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.contactlistapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     companion object {
         private const val REQUEST_CODE_PERMISSION_READ_CONTACTS = 200
         private const val REQUEST_CODE_PERMISSION_SEND_SMS = 201
     }
+    private  lateinit var binding: ActivityMainBinding
+    lateinit var contactAdapter: RecycleViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
             displayContacts()
         } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_CONTACTS), REQUEST_CODE_PERMISSION_READ_CONTACTS)
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_CONTACTS),
+                REQUEST_CODE_PERMISSION_READ_CONTACTS
+            )
         }
     }
 
@@ -44,12 +53,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val contactAdapter = RecycleViewAdapter(fetchAllContacts(), {
+        contactAdapter = RecycleViewAdapter(fetchAllContacts(), {
             val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${it.phoneNumber}"))
             startActivity(intent)
         }, {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.SEND_SMS), REQUEST_CODE_PERMISSION_SEND_SMS)
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.SEND_SMS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.SEND_SMS),
+                    REQUEST_CODE_PERMISSION_SEND_SMS
+                )
             }
 
             val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:${it.phoneNumber}"))
@@ -58,8 +75,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         })
 
-        recycler_view.setHasFixedSize(true)
-        recycler_view.apply {
+
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.apply {
             layoutManager = viewManager
             adapter = contactAdapter
         }
@@ -75,6 +93,29 @@ class MainActivity : AppCompatActivity() {
         ).show()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+
+        val searchItem = menu!!.findItem(R.id.search_view)
+        val searchView = searchItem.actionView as SearchView
+
+        searchView.setOnQueryTextListener(
+            object : SearchView.OnQueryTextListener {
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    contactAdapter.filter(searchView.query.toString())
+                    contactAdapter.notifyDataSetChanged()
+                    return false
+                }
+
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
+                }
+            }
+        )
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -85,7 +126,8 @@ class MainActivity : AppCompatActivity() {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     displayContacts()
                 } else {
-                    Toast.makeText(this, "Read contacts permission denied", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Read contacts permission denied", Toast.LENGTH_SHORT)
+                        .show()
                 }
                 return
             }
