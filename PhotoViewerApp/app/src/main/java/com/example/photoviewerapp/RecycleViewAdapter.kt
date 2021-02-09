@@ -1,32 +1,26 @@
 package com.example.contactlistapp
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.photoviewerapp.Photo
-import com.example.photoviewerapp.R
-import kotlinx.android.synthetic.main.item.view.*
+import com.example.photoviewerapp.databinding.ItemBinding
 
 class RecycleViewAdapter (val photos : ArrayList<Photo>, val onClick : (Photo) -> Unit) :
     RecyclerView.Adapter<RecycleViewAdapter.PhotoViewHolder>() {
 
-    class PhotoViewHolder(val root : View) : RecyclerView.ViewHolder(root) {
+    class PhotoViewHolder(val binding : ItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(photo : Photo) {
-            with(root) {
-                image_description.text = photo.description
-                image_url.text = photo.url
+            with(binding) {
+                imageDescription.text = photo.description
+                imageUrl.text = photo.url
             }
         }
     }
 
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        super.onAttachedToRecyclerView(recyclerView)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecycleViewAdapter.PhotoViewHolder {
-        val holder = PhotoViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false))
-        holder.root.setOnClickListener {
+        val holder = PhotoViewHolder(ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        holder.binding.root.setOnClickListener {
             onClick(photos[holder.adapterPosition])
         }
         return holder

@@ -14,8 +14,8 @@ import java.net.URL
 
 class PhotoServiceActivity : IntentService("PhotoService") {
 
-    val ACTION_FIN = "FIN"
-    var photoAbsolutePath = ""
+    private val ACTION_FIN = "FIN"
+    private var photoAbsolutePath = ""
 
     override fun onHandleIntent(intent: Intent?) {
         val imageUrl = intent?.getStringExtra("url")
@@ -31,10 +31,10 @@ class PhotoServiceActivity : IntentService("PhotoService") {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         val sentIntent = Intent(ACTION_FIN)
         sentIntent.putExtra("PATH", photoAbsolutePath)
         sendBroadcast(sentIntent)
+        super.onDestroy()
     }
 
     private fun saveToInternalStorage(bitmapImage: Bitmap?) : String {

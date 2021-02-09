@@ -12,7 +12,7 @@ import android.util.LruCache
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import kotlinx.android.synthetic.main.activity_photo.*
+import com.example.photoviewerapp.databinding.ActivityPhotoBinding
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileNotFoundException
@@ -20,19 +20,18 @@ import java.io.FileNotFoundException
 
 class PhotoActivity : AppCompatActivity() {
 
-
+    private lateinit var binding: ActivityPhotoBinding
     private var retainedFragment: RetainedFragment? = null
     private var lruCache = LruCache<String, Bitmap>(1024 * 1024 * 48)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_photo)
+        binding = ActivityPhotoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 
     override fun onResume() {
         super.onResume()
-
-        //System.out.println("onResume")
 
         val fm : FragmentManager = supportFragmentManager
         retainedFragment = fm.findFragmentByTag("retain") as? RetainedFragment
@@ -45,7 +44,7 @@ class PhotoActivity : AppCompatActivity() {
 
             val bimg = lruCache.get(imageUrl)
             if (bimg != null) {
-                image_view.setImageBitmap(lruCache.get(imageUrl))
+                binding.imageView.setImageBitmap(lruCache.get(imageUrl))
             }
         } else {
 
@@ -74,7 +73,7 @@ class PhotoActivity : AppCompatActivity() {
         try {
             val f = File(path, "profile.jpg")
             val b = BitmapFactory.decodeStream(FileInputStream(f))
-            image_view.setImageBitmap(b)
+            binding.imageView.setImageBitmap(b)
             val imageUrl = intent.extras?.getString("url")
             lruCache.put(imageUrl, b)
 
@@ -85,7 +84,7 @@ class PhotoActivity : AppCompatActivity() {
         }
     }
 
-    class ProgressReceiver(val activity: PhotoActivity) : BroadcastReceiver() {
+    class ProgressReceiver(private val activity: PhotoActivity) : BroadcastReceiver() {
         override fun onReceive(context: Context?, intentReq: Intent?) {
             if (intentReq?.action.equals("FIN")) {
                 activity.loadImageFromStorage(intentReq?.extras?.getString("PATH"))
@@ -96,12 +95,11 @@ class PhotoActivity : AppCompatActivity() {
     class RetainedFragment : Fragment() {
         // data object we want to retain
         var retain = LruCache<String, Bitmap>(1024 * 1024 * 48)
-
         // this method is only called once for this fragment
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             // retain this fragment
-            setRetainInstance(true)
+            retainInstance = true
         }
     }
 }

@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.contactlistapp.RecycleViewAdapter
+import com.example.photoviewerapp.databinding.ActivityMainBinding
 import com.google.gson.GsonBuilder
-import kotlinx.android.synthetic.main.activity_main.*
 import java.io.InputStreamReader
 import java.lang.ref.WeakReference
 import java.net.URL
@@ -17,8 +17,10 @@ import java.net.URL
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     companion object {
-        private const val TOKEN = "6f5a81d96f5a81d96f5a81d92f6f2ec6c166f5a6f5a81d93026f6d4af4aba0d77456e34"
+        private const val TOKEN = BuildConfig.TOKEN
     }
     private var listOfPhotos = arrayListOf<Photo>()
 
@@ -64,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         if (photoAdapter.itemCount == 0) {
             Toast.makeText(this, "No results", Toast.LENGTH_SHORT).show()
         }
-        recycler_view.apply {
+        binding.recyclerView.apply {
             layoutManager = viewManager
             adapter = photoAdapter
         }
@@ -72,14 +74,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 
     override fun onResume() {
         super.onResume()
         if (listOfPhotos.isEmpty()) {
             Log.d("Restart", "Here!!!")
-            //Toast.makeText(this, "Restart", Toast.LENGTH_SHORT).show()
             DescriptionLoader(this).execute()
         } else {
             showListOfDescriptions(listOfPhotos)
