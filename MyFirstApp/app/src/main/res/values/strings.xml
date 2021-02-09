@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">MyFirstApp</string>
-    <string name="textView">0</string>
-    <string name="toast_button">Toast</string>
-    <string name="count_button">Count</string>
-    <string name="random_button">Random</string>
-    <string name="random_heading">Random number between 0 and %1d</string>
-</resources>
