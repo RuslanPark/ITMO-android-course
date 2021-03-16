@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.example.navigationapp.databinding.ActivityMainBinding
+import com.ruslanpark.kakeiboapp.main.setupWithNavController
 
 class MainActivity : AppCompatActivity() {
 

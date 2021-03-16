@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-package com.example.navigationapp
+package com.ruslanpark.kakeiboapp.main
 
-import android.app.FragmentManager
 import android.content.Intent
 import android.util.SparseArray
 import androidx.core.util.forEach
@@ -26,6 +25,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.example.navigationapp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /**
