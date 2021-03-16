@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         override fun doInBackground(vararg p0: Void?) : ArrayList<Photo> {
             val listOfPhotos = arrayListOf<Photo>()
 
-            val url = "https://api.vk.com/method/photos.search?q=Nature&access_token=${TOKEN}&v=5.124&count=100"
+            val url = "https://api.vk.com/method/photos.search?q=LordOfTheRings&access_token=${TOKEN}&v=5.124&count=100"
             var stringOnJSON = "Hello"
             try {
                 stringOnJSON = InputStreamReader( URL(url).openConnection().getInputStream() ).readText()
