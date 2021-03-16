@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
-import com.example.android.navigationadvancedsample.setupWithNavController
 import com.example.navigationapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
